@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          
+      .dice {
+
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+ 
+  
+      
+
+  
+    
+    </style>
+</head>
+<body>
+    <body>
+        <div id="winner"></div>
+        <div class="dice" id="member-1">0</div>
+        <div class="dice" id="member-2">0</div>
+        <div class="dice" id="member-3">0</div>
+        <button id="roll">ROLL THE DICE</button>
+    </body>
+    
+</body>
+</html>
+<script>
+    var diceButton = document.getElementById("roll");
+diceButton.addEventListener("click", function() {
+    rollDice();
+});
+
+function rollDice() {
+    const member1 = document.getElementById("member-1");
+    const member2 = document.getElementById("member-2");
+    const member3 = document.getElementById("member-3");
+
+    var roll1 = Math.floor(Math.random() * 6) + 1;
+    var roll2 = Math.floor(Math.random() * 6) + 1;
+    var roll3 = Math.floor(Math.random() * 6) + 1;
+
+    member1.textContent = roll1;
+    member2.textContent = roll2;
+    member3.textContent = roll3;
+
+    var winnerDiv = document.getElementById("winner");
+    if (roll1 > roll2 && roll1 > roll3) {
+        member1.style.backgroundColor = "green";
+        member2.style.backgroundColor = "yellow";
+        member3.style.backgroundColor = "red";
+        winnerDiv.textContent = "Member A wins!";
+    } else if (roll2 > roll1 && roll2 > roll3) {
+        member1.style.backgroundColor = "red";
+        member2.style.backgroundColor = "green";
+        member3.style.backgroundColor = "yellow";
+        winnerDiv.textContent = "Member B wins!";
+    } else if (roll3 > roll1 && roll3 > roll2) {
+        member1.style.backgroundColor = "yellow";
+        member2.style.backgroundColor = "red";
+        member3.style.backgroundColor = "green";
+        winnerDiv.textContent = "Member C wins!";
+    } else {
+        member1.style.backgroundColor = "blue";
+        member2.style.backgroundColor = "blue";
+        member3.style.backgroundColor = "blue";
+        winnerDiv.textContent = "It's a draw!";
+    }
+}
+</script>
